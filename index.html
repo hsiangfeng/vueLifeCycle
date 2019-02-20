@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue 生命週期</title>
+  </head>
+  <style>
+    #app {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .vueleftDiv{
+      text-align: center;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <h2>{{ vueData }}</h2>
+      <div class="vueleftDiv">
+        <div id="beforeCreate"></div>
+        <div id="created"></div>
+        <div id="beforeMount">
+          <h4>----beforeMount階段----</h4>
+          可以觀察出beforeMount中的東西，並不會顯示出來，Vue會以非常高效能的速度切換至mounted階段。
+        </div>
+        <div id="mounted"></div>
+        <div id="beforeUpdate"></div>
+        <div id="updated"></div>
+      </div>
+      <button @click="dataUpdata">替換資料((會觸發beforeUpdate & updated))</button>
+      <h4>----先不要點選上方替換資料按鈕----</h4>
+      <p>點選銷毀元件後再點選替換資料按鈕，會發現VUE無法控制畫面了。</p>
+      <button id="delComponent">銷毀元件</button>
+      <br>
+      <h3>以下是元件</h3>
+      <br>
+      <vue-life :templateData="vueData"></vue-life>
+    </div>
+
+    <script type="text/x-template" id="vue-life">
+      <h2>{{ templatedata }}</h2>
+    </script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/all.js"></script>
+  </body>
+
+</html>
